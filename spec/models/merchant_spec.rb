@@ -78,7 +78,7 @@ RSpec.describe Merchant do
   let!(:invoice_item_6) {InvoiceItem.create!(item_id: item_6.id, invoice_id: invoice_6.id, unit_price: 1500, quantity: 1, status: 2)}
   let!(:invoice_item_7) {InvoiceItem.create!(item_id: item_7.id, invoice_id: invoice_7.id, unit_price: 400, quantity: 36, status: 2)}
   let!(:invoice_item_8) {InvoiceItem.create!(item_id: item_8.id, invoice_id: invoice_8.id, unit_price: 500, quantity: 1, status: 2)}
-  let!(:invoice_item_9) {InvoiceItem.create!(item_id: item_9.id, invoice_id: invoice_9.id, unit_price: 100, quantity: 1, status: 2)}
+  let!(:invoice_item_9) {InvoiceItem.create!(item_id: item_9.id, invoice_id: invoice_9.id, unit_price: 400, quantity: 37, status: 2)}
   let!(:invoice_item_10) {InvoiceItem.create!(item_id: item_10.id, invoice_id: invoice_10.id, unit_price: 100, quantity: 1, status: 2)}
   let!(:invoice_item_11) {InvoiceItem.create!(item_id: item_11.id, invoice_id: invoice_11.id, unit_price: 100, quantity: 1, status: 2)}
   let!(:invoice_item_12) {InvoiceItem.create!(item_id: item_12.id, invoice_id: invoice_12.id, unit_price: 100, quantity: 1, status: 2)}
