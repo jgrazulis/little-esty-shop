@@ -20,4 +20,4 @@ RSpec.describe 'Merchant Creation' do
         expect(page).to have_content('New Merchant')
       end
     end
-  end 
+  end

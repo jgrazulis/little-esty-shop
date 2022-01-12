@@ -1,4 +1,5 @@
-<h2>Invoice #<%= @invoice.id %></h2>
+<%= render partial: '/layouts/partials/merchant_dashboard_links' %><br>
+<h1>Invoice Number <%= @invoice.id %></h1>
 
 <p>Invoice Status: <%= @invoice.status %></p>
 <p>Created On: <%= @invoice.creation_date_formatted %></p>
@@ -15,14 +16,13 @@
       <p>Quantity: <%= invoice_item.quantity %> </p>
       <p>Unit Price: $<%= invoice_item.unit_price.to_f/100 %> </p>
       <p>Invoice Status: <%= invoice_item.status %> </p>
+      <p> <%= form_with url: merchant_invoice_path(item.merchant_id, @invoice.id), method: :patch, local: true do |f| %>
+        <%= f.hidden_field :invoice_item_id, value: invoice_item.id %>
+        <%= f.label :status, "Status"  %>
+        <%= f.select :status, [["Packaged", 'packaged'], ["Pending", 'pending'], ["Shipped", 'shipped']], selected: invoice_item.status %>
+        <%= f.submit "Update Item Status" %>
+        <% end %>
     <% end %>
-
-    <p> <%= form_with url: merchant_invoice_path(item.merchant_id, @invoice.id), method: :patch, local: true do |f| %>
-      <%= f.hidden_field :item_id, value: item.id %>
-      <%= f.label :status, "Status"  %>
-      <%= f.select :status, [["Enabled", 'enabled'], ["Disabled", 'disabled']], selected: "#{item.status}" %>
-      <%= f.submit "Update Item Status" %>
-      <% end %>
     </p>
   </div>
 <% end %>
