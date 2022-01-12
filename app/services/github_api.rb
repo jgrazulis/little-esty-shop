@@ -37,5 +37,3 @@ pulls_parsed = JSON.parse(pulls_response.body, symbolize_names: true)
 pulls = pulls_parsed.map do |pull_data|
   Pull.new(commit_data)
 end
-
-require "pry"; binding.pry
