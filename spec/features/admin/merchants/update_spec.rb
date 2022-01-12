@@ -20,4 +20,13 @@ RSpec.describe 'Merchant Update' do
       expect(page).to have_content("Successfully Updated Merchant Information")
     end
   end
+
+  describe 'visitor fails to fills out all fields in the form and clicks button to submit' do
+    it 'submits the edit form but does not update merchant' do
+      visit edit_admin_merchant_path(merchant_1.id)
+      click_button 'Update Merchant'
+
+      expect(current_path).to eq(admin_merchant_path(merchant_1.id))
+    end
+  end
 end
