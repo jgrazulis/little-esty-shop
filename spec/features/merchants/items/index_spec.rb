@@ -20,6 +20,7 @@ RSpec.describe 'Merchant Dashboard' do
   let!(:invoice_1) {customer_1.invoices.create!(status: 1, created_at: '2012-03-25 09:54:09')}
   let!(:invoice_2) {customer_2.invoices.create!(status: 1, created_at: '2012-04-25 08:54:09')}
   let!(:invoice_3) {customer_3.invoices.create!(status: 1, created_at: '2012-10-25 04:54:09')}
+  let!(:invoice_4) {customer_3.invoices.create!(status: 1, created_at: '2012-10-25 04:54:09')}
 
   let!(:invoice_item_1) {InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice_1.id, unit_price: 1000, quantity: 1,  status: 0)}
   let!(:invoice_item_2) {InvoiceItem.create!(item_id: item_2.id, invoice_id: invoice_2.id, unit_price: 900, quantity: 1, status: 0)}
@@ -29,6 +30,7 @@ RSpec.describe 'Merchant Dashboard' do
   let!(:invoice_item_6) {InvoiceItem.create!(item_id: item_2.id, invoice_id: invoice_1.id, unit_price: 900, quantity: 1, status: 2)}
   let!(:invoice_item_7) {InvoiceItem.create!(item_id: item_7.id, invoice_id: invoice_3.id, unit_price: 400, quantity: 36, status: 2)}
   let!(:invoice_item_8) {InvoiceItem.create!(item_id: item_8.id, invoice_id: invoice_3.id, unit_price: 500, quantity: 2, status: 2)}
+  let!(:invoice_item_9) {InvoiceItem.create!(item_id: item_8.id, invoice_id: invoice_4.id, unit_price: 400, quantity: 37, status: 2)}
 
   let!(:transaction_1) {invoice_1.transactions.create!(result: 'success')}
   let!(:transaction_2) {invoice_2.transactions.create!(result: 'success')}
@@ -36,6 +38,7 @@ RSpec.describe 'Merchant Dashboard' do
   let!(:transaction_4) {invoice_1.transactions.create!(result: 'success')}
   let!(:transaction_5) {invoice_2.transactions.create!(result: 'success')}
   let!(:transaction_6) {invoice_3.transactions.create!(result: 'success')}
+  let!(:transaction_7) {invoice_4.transactions.create!(result: 'failed')}
 
   before(:each) do
     visit merchant_items_path(merchant_1.id)
