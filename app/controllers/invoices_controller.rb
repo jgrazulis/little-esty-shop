@@ -15,12 +15,15 @@ class InvoicesController < ApplicationController
   def update
     @invoice = Invoice.find(params[:id])
 
-    if params[:status]["enabled"]
-      @item = Item.find(params[:item_id])
-      @item.update(status: 0)
-    elsif params[:status]['disabled']
-      @item = Item.find(params[:item_id])
-      @item.update(status: 1)
+    if params[:status]["packaged"]
+      @invoice_item = InvoiceItem.find(params[:invoice_item_id])
+      @invoice_item.update(status: 0)
+    elsif params[:status]['pending']
+      @invoice_item = InvoiceItem.find(params[:invoice_item_id])
+      @invoice_item.update(status: 1)
+    elsif params[:status]['shipped']
+      @invoice_item = InvoiceItem.find(params[:invoice_item_id])
+      @invoice_item.update(status: 2)
     end
 
     redirect_to merchant_invoice_path(params[:merchant_id], params[:id])
