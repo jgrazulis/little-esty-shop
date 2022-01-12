@@ -1,14 +1,23 @@
-<%= render partial: '/layouts/partials/admin_dashboard_links' %><br>
-<h3>Admin Dashboard</h3>
+<div style="text-align: right; top:-10px;font-size:100%;">
+  <%= render partial: '/layouts/partials/admin_dashboard_links' %><br>
+</div>
 
+<div style="text-align: left; top:px; font-size:150%;">
+  <h3>Admin Dashboard</h3>
+</div>
+
+<div style = "position:absolute; right:30px; top:200px">
 <h3>Top 5 Customers</h3>
-<% @top_5.each do |customer| %>
-  <div id="customer<%= customer.id %>">
-  <p><%= customer.first_name %> <%= customer.last_name %> <%= customer.transaction_count %></p>
-  </div>
-<% end %>
+<ol>
+  <% @top_5.each do |customer| %>
+    <div id="customer<%= customer.id %>">
+    <li><%= customer.first_name %> <%= customer.last_name %> - <%= customer.transaction_count %> purchases</li>
+    </div>
+  <% end %>
+</ol>
+</div>
 
-<div id="incomplete-invoices">
+<div id="incomplete-invoices" style ="position:absolute; left:30px; top:200px">
   <h3>Incomplete Invoices:</h3>
 
   <% @incomplete_invoices.each do |invoice| %>
