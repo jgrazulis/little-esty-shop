@@ -1,8 +1,8 @@
 <%= render partial: '/layouts/partials/admin_dashboard_links' %><br>
 <h1> Id: <%= @invoice.id %></h1>
 
+  <p>Status: <%= @invoice.status %></p>
 <p> <%= form_with url: admin_invoice_path(@invoice.id), method: :patch, local: true do |f| %>
-  <%= f.label :status, "Status"  %>
   <%= f.select :status, [["Cancelled", 'cancelled'], ["Completed", 'completed'], ["In Progress", 'in progress']], selected: @invoice.status %>
   <%= f.submit "Update Invoice Status" %>
   <% end %>
