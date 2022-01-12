@@ -9,12 +9,12 @@ class GithubService
   end
 
   def commits
-    get_url("https://api.github.com/repos/Sierra-T-9598/little-esty-shop/commits")
+    get_url("https://api.github.com/repos/Sierra-T-9598/little-esty-shop/commits?per_page=100")
   end
 
 
   def pull_requests
-    get_url("https://api.github.com/repos/Sierra-T-9598/little-esty-shop/pulls?state=closed")
+    get_url("https://api.github.com/repos/Sierra-T-9598/little-esty-shop/pulls?state=closed&per_page=100")
   end
 
 

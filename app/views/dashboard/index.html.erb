@@ -3,9 +3,9 @@
 </div>
 
 <div style="text-align: right; top:-10px;font-size:100%;">
-  <%= link_to "My items", merchant_items_path(@merchant.id) %>
-  <%= link_to "My invoices", merchant_invoices_path(@merchant.id) %>
+  <%= render partial: '/layouts/partials/merchant_dashboard_links' %><br>
 </div>
+
 <div style = "position:absolute; right:30px; top:40px">
 <%= render partial: '/layouts/partials/top_customers' %>
 </div>
