@@ -1,3 +1,4 @@
+<%= render partial: '/layouts/partials/merchant_dashboard_links' %><br>
 <h1>My Items</h1>
 
 <section id="enabled">
@@ -25,7 +26,7 @@
 <ol>
 <% @merchant.top_five_items.each do |item| %>
 <div id="item<%=item.id%>">
-  <li><%= link_to item.name, merchant_item_path(@merchant.id, item.id) %> - $<%= item.total_revenue.to_f/100 %> in sales 
+  <li><%= link_to item.name, merchant_item_path(@merchant.id, item.id) %> - $<%= item.total_revenue.to_f/100 %> in sales
   <br>Top Day for <%= item.name %> was <%= item.date_with_most_sales %></li>
 </div>
 <% end %>

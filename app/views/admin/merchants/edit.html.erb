@@ -1,6 +1,7 @@
+<%= render partial: '/layouts/partials/admin_dashboard_links' %><br>
 <%= form_with model: [:admin, @merchant], local: true do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, required: :true %>
 
   <%= f.submit %>
 <% end %>

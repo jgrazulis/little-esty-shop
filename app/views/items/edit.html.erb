@@ -1,9 +1,10 @@
+<%= render partial: '/layouts/partials/admin_dashboard_links' %><br>
 <%= form_with url: merchant_item_path(@merchant.id, @item.id), method: :patch, local: true do |form|%>
 <%= form.label :name %>
-<%= form.text_field :name, value: @item.name %>
+<%= form.text_field :name, value: @item.name, required: :true %>
 <%= form.label :description %>
-<%= form.text_field :description, value: @item.description %>
+<%= form.text_field :description, value: @item.description, required: :true %>
 <%= form.label :unit_price, "Unit Price (in USD)" %>
-<%= form.text_field :unit_price, value: @item.unit_price.to_f/100 %>
+<%= form.text_field :unit_price, value: @item.unit_price.to_f/100, required: :true %>
 <%= form.submit "Update" %>
 <% end  %>
