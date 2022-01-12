@@ -3,6 +3,6 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon --exec babel-node src/server.js"
   }
 }
