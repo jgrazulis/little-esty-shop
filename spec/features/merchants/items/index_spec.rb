@@ -108,7 +108,7 @@ RSpec.describe 'Merchant Dashboard' do
       expect(current_path).to eq(merchant_items_path(merchant_1.id))
     end
 
-    scenario 'visitor sees a button to disable that item' do
+    scenario 'visitor sees a button to enable that item' do
       within "#disabled_item-#{item_3.name}" do
         expect(page).to have_button("Enable")
         click_button "Enable"
