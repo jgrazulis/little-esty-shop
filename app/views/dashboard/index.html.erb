@@ -1,6 +1,5 @@
+<%= render partial: '/layouts/partials/merchant_dashboard_links' %><br>
 <%= @merchant.name %>
-<%= link_to "My items", merchant_items_path(@merchant.id) %>
-<%= link_to "My invoices", merchant_invoices_path(@merchant.id) %>
 
 <%= render partial: '/layouts/partials/top_customers' %>
 
