@@ -1,5 +1,8 @@
 {
   "name": "little-etsy-shop",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  }
 }
