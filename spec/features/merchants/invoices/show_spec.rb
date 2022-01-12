@@ -37,8 +37,8 @@ RSpec.describe 'Merchant Invoice Show Page', type: :feature do
     end
 
     it 'displays customer first and last name' do
-      expect(page).to have_content("First Name: #{customer_1.first_name}")
-      expect(page).to have_content("Last Name: #{customer_1.last_name}")
+      expect(page).to have_content(customer_1.first_name)
+      expect(page).to have_content(customer_1.last_name)
     end
   end
 
