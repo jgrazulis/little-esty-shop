@@ -25,3 +25,8 @@
    font-size: 30px;
    line-height: 10px;
  }
+
+ .footer {
+  position: relative;
+  margin-top: -180px;
+ }
