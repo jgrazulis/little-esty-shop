@@ -16,10 +16,8 @@
         <h1>Little Esty Shop</h1>
       </div>
     </header>
-    <%= yield %>
-  </body>
-
   <footer>
+    <div class="footer">
     <h3><%= @repo.repo_name %></h3>
 
     <h3>Contributors</h3>
@@ -29,7 +27,10 @@
       <% end %>
     <% end  %>
     <h3> Closed Pull Requests: <%= @pull_requests.count %> </h3>
-
-
+    </div>
   </footer> 
+    <%= yield %>
+  
+  </body>
+
 </html>
