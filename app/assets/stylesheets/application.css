@@ -27,6 +27,7 @@
  }
 
  .footer {
-  position: relative;
-  margin-top: -180px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
  }
