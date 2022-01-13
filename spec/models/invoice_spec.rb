@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Invoice do
+  describe 'relations' do
+    it { should belong_to :customer }
+    it { should have_many :transactions}
+    it { should have_many :invoice_items }
+    it { should have_many(:items).through(:invoice_items) }
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of(:customer_id)}
+    it { should define_enum_for(:status).with_values([:cancelled, :completed, 'in progress']) }
+  end
 
   let!(:merchant_1) {Merchant.create!(name: 'Ron Swanson')}
   let!(:merchant_2) {Merchant.create!(name: 'Bella Donna')}
@@ -21,13 +32,6 @@ RSpec.describe Invoice do
   let!(:invoice_item_3) {InvoiceItem.create!(quantity: 1, unit_price: item_3.unit_price, item_id: item_3.id, invoice_id: invoice_1.id, status: 0)}
   let!(:invoice_item_4) {InvoiceItem.create!(quantity: 1, unit_price: item_3.unit_price, item_id: item_3.id, invoice_id: invoice_2.id, status: 1)}
   let!(:invoice_item_5) {InvoiceItem.create!(quantity: 1, unit_price: item_3.unit_price, item_id: item_3.id, invoice_id: invoice_3.id, status: 2)}
-
-  describe 'relations' do
-    it { should belong_to :customer }
-    it { should have_many :transactions}
-    it { should have_many :invoice_items }
-    it { should have_many(:items).through(:invoice_items) }
-  end
 
   describe 'instance methods' do
     describe '#creation_date_formatted' do

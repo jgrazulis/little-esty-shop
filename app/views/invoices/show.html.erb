@@ -1,29 +1,29 @@
+<%= render partial: '/layouts/partials/merchant_dashboard_links' %><br>
 <h1>Invoice Number <%= @invoice.id %></h1>
 
-<h2>Invoice Status: <%= @invoice.status %></h2>
-<h2>Created On: <%= @invoice.creation_date_formatted %></h2>
-<h2>Customer Information:</h2>
-<p>First Name: <%= @invoice.customer.first_name %></p>
-<p>Last Name: <%= @invoice.customer.last_name %></p>
+<p>Invoice Status: <%= @invoice.status %></p>
+<p>Created On: <%= @invoice.creation_date_formatted %></p>
+<p>Total Revenue: $<%= @total_revenue.to_f/100 %> </p>
 
-<h2>Merchant Items:</h2>
+<h3>Customer Information:</h3>
+<p>Name: <%= @invoice.customer.first_name %> <%= @invoice.customer.last_name %></p>
+
+<h3>Items on this Invoice:</h3>
 <% @merchant_items.each do |item| %>
+    <% item.invoice_items_filtered_by_ivoice_id(@invoice.id).each do |invoice_item| %>
   <div id="item<%= item.id %>">
     <p>Item: <%= item.name %> </p>
-    <% item.invoice_items_filtered_by_ivoice_id(@invoice.id).each do |invoice_item| %>
-      <p>Unit Price: $<%= invoice_item.unit_price.to_f/100 %> </p>
       <p>Quantity: <%= invoice_item.quantity %> </p>
+      <p>Unit Price: $<%= invoice_item.unit_price.to_f/100 %> </p>
       <p>Invoice Status: <%= invoice_item.status %> </p>
+      <p> <%= form_with url: merchant_invoice_path(item.merchant_id, @invoice.id), method: :patch, local: true do |f| %>
+        <%= f.hidden_field :invoice_item_id, value: invoice_item.id %>
+        <%= f.label :status, "Status"  %>
+        <%= f.select :status, [["Packaged", 'packaged'], ["Pending", 'pending'], ["Shipped", 'shipped']], selected: invoice_item.status %>
+        <%= f.submit "Update Item Status" %>
+        <% end %>
     <% end %>
-    <p> <%= form_with url: merchant_invoice_path(item.merchant_id, @invoice.id), method: :patch, local: true do |f| %>
-      <%= f.hidden_field :item_id, value: item.id %>
-      <%= f.label :status, "Status"  %>
-      <%= f.select :status, [["Enabled", 'enabled'], ["Disabled", 'disabled']], selected: "#{item.status}" %>
-      <%= f.submit "Update Item Status" %>
-      <% end %>
-
     </p>
   </div>
 <% end %>
 
-<h2>Total Revenue: $<%= @total_revenue.to_f/100 %> </h2>

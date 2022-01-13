@@ -12,4 +12,16 @@
  *
  *= require_tree .
  *= require_self
- */
+*/
+
+ .header {
+   padding: 60px;
+   text-align: center;
+   background: lightgrey;
+   width: 500px;
+   height: 10px;
+   margin: auto;
+   color: black;
+   font-size: 30px;
+   line-height: 10px;
+ }

@@ -1,6 +1,8 @@
 <h3>Top 5 Customers</h3>
+<ol type="1">
 <% @merchant.top_5_customers.each do |customer| %>
   <div id="customer<%= customer.id %>">
-  <p><%= customer.first_name %> <%= customer.last_name %> <%= customer.transaction_count %></p>
+  <li><%= customer.first_name %> <%= customer.last_name %> - <%= customer.transaction_count %> Purchases</p></li>
   </div>
 <% end %>
+</ol>

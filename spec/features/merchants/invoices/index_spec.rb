@@ -10,7 +10,6 @@ RSpec.describe 'Merchant Invoices Index Page', type: :feature do
   let!(:item_3) {merchant_1.items.create!(name: "Earrings", description: "A thing around your ears", unit_price: 220)}
   let!(:item_4) {merchant_2.items.create!(name: "Necklace", description: "A thing around your neck", unit_price: 150)}
   let!(:item_5) {merchant_2.items.create!(name: "Bracelet", description: "A thing around your wrist", unit_price: 300)}
-  let!(:item_6) {merchant_2.items.create!(name: "Earrings", description: "A thing around your ears", unit_price: 220)}
 
   let!(:customer_1) {Customer.create!(first_name: "Billy", last_name: "Joel")}
   let!(:customer_2) {Customer.create!(first_name: "Britney", last_name: "Spears")}
@@ -21,19 +20,12 @@ RSpec.describe 'Merchant Invoices Index Page', type: :feature do
   let!(:invoice_3)  {customer_2.invoices.create!(status: 1, created_at: '2012-04-25 08:54:09')}
   let!(:invoice_4)  {customer_3.invoices.create!(status: 1, created_at: '2012-03-29 07:54:09')}
 
-  let!(:invoice_item_1) {InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice_1.id, status: 0)}
-  let!(:invoice_item_2) {InvoiceItem.create!(item_id: item_4.id, invoice_id: invoice_1.id, status: 0)}
-  let!(:invoice_item_3) {InvoiceItem.create!(item_id: item_5.id, invoice_id: invoice_1.id, status: 0)}
-  let!(:invoice_item_4) {InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice_2.id, status: 0)}
-  let!(:invoice_item_5) {InvoiceItem.create!(item_id: item_2.id, invoice_id: invoice_2.id, status: 0)}
-  let!(:invoice_item_6) {InvoiceItem.create!(item_id: item_3.id, invoice_id: invoice_3.id, status: 0)}
-  let!(:invoice_item_7) {InvoiceItem.create!(item_id: item_4.id, invoice_id: invoice_4.id, status: 0)}
-  let!(:invoice_item_8) {InvoiceItem.create!(item_id: item_5.id, invoice_id: invoice_4.id, status: 0)}
-
-  let!(:transaction_1) {invoice_1.transactions.create!(result: 'success')}
-  let!(:transaction_2) {invoice_2.transactions.create!(result: 'success')}
-  let!(:transaction_3) {invoice_3.transactions.create!(result: 'success')}
-  let!(:transaction_4) {invoice_4.transactions.create!(result: 'success')}
+  let!(:invoice_item_1) {InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice_1.id, unit_price: item_1.unit_price, quantity: 2, status: 0)}
+  let!(:invoice_item_2) {InvoiceItem.create!(item_id: item_4.id, invoice_id: invoice_1.id, unit_price: item_4.unit_price, quantity: 2, status: 0)}
+  let!(:invoice_item_3) {InvoiceItem.create!(item_id: item_5.id, invoice_id: invoice_1.id, unit_price: item_5.unit_price, quantity: 2, status: 0)}
+  let!(:invoice_item_4) {InvoiceItem.create!(item_id: item_1.id, invoice_id: invoice_2.id, unit_price: item_1.unit_price, quantity: 2, status: 0)}
+  let!(:invoice_item_5) {InvoiceItem.create!(item_id: item_2.id, invoice_id: invoice_2.id, unit_price: item_2.unit_price, quantity: 2, status: 0)}
+  let!(:invoice_item_6) {InvoiceItem.create!(item_id: item_3.id, invoice_id: invoice_3.id, unit_price: item_3.unit_price, quantity: 2, status: 0)}
 
   before (:each) do
     visit merchant_invoices_path(merchant_1)

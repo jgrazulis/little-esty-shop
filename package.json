@@ -1,5 +1,8 @@
 {
   "name": "little-etsy-shop",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "start": "nodemon --exec babel-node src/server.js"
+  }
 }
