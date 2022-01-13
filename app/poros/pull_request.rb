@@ -4,7 +4,6 @@ class PullRequest
               :user_name 
 
   def initialize(data)
-    
     @title = data[:title]
     @user_name = data[:user][:login]
   end

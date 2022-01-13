@@ -5,5 +5,4 @@ class Repo
   def initialize(data)
     @repo_name = data
   end
-
 end
