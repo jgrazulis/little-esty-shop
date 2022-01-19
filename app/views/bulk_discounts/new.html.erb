@@ -1,0 +1,8 @@
+<%= form_with url: "/merchants/#{@merchant.id}/bulk_discounts/new" do |form| %>
+  <%= form.label :percentage %>
+  <%= form.text_field :percentage %>
+  <%= form.label :number_of_items %>
+  <%= form.text_field :number_of_items %>
+
+  <%= form.submit "Submit" %>
+<% end %>
